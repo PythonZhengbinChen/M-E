@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="i18n.encoding" value="utf-8" />
+	<!-- 配置为开发模式 -->
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.locale" value="zh_CN" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<constant name="struts.multipart.maxSize" value="1048576000" />
+	<constant name="struts.custom.i18n.resources" value="globalMessages" />
+	<!-- 配置后台管理 -->
+	<package name="manager" extends="struts-default" namespace="/manager">
+		<action name="index_*" class="com.ME.action.admin.IndexAction" method="{1}">
+			<result name="head">/page/Admin/Img-head.jsp</result>
+			<result name="top">/page/Admin/Nav-top.jsp</result>
+			<result name="left">/page/Admin/Pull-down-left.jsp</result>
+			<result name="main">/page/Admin/Main.jsp</result>
+			<result name="index">/page/Admin/System-admin.jsp</result>
+			<result name="newindex" type="redirectAction">index_index</result>
+		</action>
+		<action name="admin_*" class="com.ME.action.admin.AdminAction" method="{1}">
+			<result name="list">/page/Admin/Member-manage.jsp</result>
+			<result name="delete" type="redirectAction">admin_list</result>
+			<result name="info">/page/Admin/Member-manage-info.jsp</result>
+			<result name="adminList">/page/Admin/user/User-manage.jsp</result>
+			<result name="update" type="redirectAction">admin_adminList</result>
+			<result name="addAdmin" type="redirectAction">admin_adminList</result>
+			<result name="adminIndex" type="redirectAction">index_index</result>
+			<result name="errorlogin">/page/Admin/login.jsp</result>
+			<result name="login">/page/Admin/login.jsp</result>
+			<result name="outlogin">/page/Admin/login.jsp</result>
+		</action>
+		<action name="adminDianying_*" class="com.ME.action.admin.DianyingAction" method="{1}">
+			<result name="dianyingManage">/page/Admin/dyguanli/dyliebiao.jsp</result>
+			<result name="dianyingChange">/page/Admin/dianying/dianyingcontent.jsp</result>
+			<result name="dianyingAdd">/page/Admin/dianying/dianyingcontent.jsp</result>
+			<result name="deleteSuccess"  type="redirectAction">adminDianying_getDianyingListForManage</result>
+			<result name="updateSuccess"  type="redirectAction">adminDianying_getDianyingListForManage</result>
+		</action>
+		<action name="adminPinglun_*" class="com.ME.action.admin.PinglunAction" method="{1}">
+			<result name="pinglunList">/page/Admin/pinglunliebiao.jsp</result>
+			<result name="pinglunInfo">/page/Admin/yingpingxiangxi.jsp</result>
+			<result name="deleteSuccess"  type="redirectAction">adminPinglun_getPinglunList</result>
+		</action>
+		<action name="adminUser_*" class="com.ME.action.admin.UserAction" method="{1}">
+			<result name="userList">/page/Admin/userList.jsp</result>
+			<result name="cancelSuccess"  type="redirectAction">adminUser_getUserList</result>
+		</action>
+		
+		<!-- 文件上传添加 -->
+        <action name="fileUpdate" class="com.ME.action.admin.FileAction" method="execute">
+        	<result name="success">
+        		<param name="data">data</param>
+        	</result>
+        </action>
+	</package>
+</struts>    

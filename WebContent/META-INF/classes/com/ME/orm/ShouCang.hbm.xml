@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-5-24 10:22:34 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.ME.orm.ShouCang" table="shoucang">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="native"/>
+        </id>
+        <property name="dianyingid" type="string">
+            <column name="dianyingid" />
+        </property>
+        <property name="username" type="string">
+            <column name="username" />
+        </property>
+        <property name="createtime" type="date">
+            <column name="createtime" />
+        </property>
+    </class>
+</hibernate-mapping>

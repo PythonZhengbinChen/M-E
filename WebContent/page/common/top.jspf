@@ -1,0 +1,67 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!--        *****************  首栏    ---------------------              -->
+	<div class="First-container container">
+		<div class="line">
+			<ul class="bread">
+			
+				
+				<%
+				int flag = 0;
+				Cookie[] cookies = request.getCookies();
+				 if (cookies != null) {
+			         for (Cookie cookie : cookies) {
+			        	 if("loginer".equals(cookie.getName()) && !cookie.getValue().equals("")){
+			        		 flag = 1;
+			        	 %>
+			        	 <li><a href="user_userInfoPage.action?username=<% out.println(cookie.getValue()); %>" class="text-red"><% out.println(cookie.getValue()); %>欢迎登陆</a></li>
+			        	 <li><a href="user_outLine.action">退出</a></li>
+			        	 <%
+			        	 } else if(flag == 0) { %>
+						 	<li><a href="user_loginar.action" class="text-green">登录</a></li>
+							<li><a href="user_regar.action">免费注册</a></li>
+						 <%}     	 
+			         }
+				 } else { %>
+				 	<li><a href="user_loginar.action" class="text-green">登录</a></li>
+					<li><a href="user_regar.action">免费注册</a></li>
+				 <%} %>
+			</ul>
+		</div>
+	</div>
+
+	<!--        *****************  导航栏    ---------------------              -->
+	<div class="navbar bg-green-light bg-inverse radius ">
+		<div class="navbar-container container">
+			<div class="line">
+			<a href="user_index.action">
+				<div class="x3">
+					<img src="${pageContext.request.contextPath}/img/me.png"
+						class="nav_logo" />
+				</div>
+				</a>
+				<div class="x6" style="height: 79px;">
+					<div class="navbar-body nav-navicon x6" style="height: 100%;" id="navbar-bg1" >
+						<ul class="nav nav-inline"  style="height: 100%;">
+							<li style="height: 100%;"><a style="height: 100%;color:#007236; padding-top:30px;" href="user_index.action"><i class="fa fa-home"></i>首页</a></li>
+							<li style="height: 100%;"><a style="height: 100%;color: #007236; padding-top:30px;"href="paihangbang_getDianyingPaihangbangList.action"><i class="fa fa-leaf"></i>排行榜</a></li>
+							<li style="height: 100%;"><a style="height: 100%;color: #007236; padding-top:30px;"href="fenlei_getDefaultDianyingList.action"><i class="fa fa-transgender"></i>分类</a></li>
+							<li style="height: 100%;"><a style="height: 100%;color: #007236; padding-top:30px;"href="pinglun_getPinglunList.action"><i class="fa fa-coffee"></i>影评</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="float-right">
+					<div class="navbar-form navbar-right "  style="height: 79px;">
+						<form action="dianying_search.action" method="post"  style="height: 100%;">
+						 <div class="input-inline clearfix" style="height: 100%; padding-top:25px;">
+							<input style="height:35px; width: 250px;" type="text" class="input  border-main" name="searchKey"size="20" placeholder="搜索电影、电视剧" />
+							<input  style=" padding: 10px;height:35px;" class="button bg-main" type="submit" value="搜索" />
+						</div>
+								
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

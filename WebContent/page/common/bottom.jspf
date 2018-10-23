@@ -1,0 +1,19 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!--          *********************     底部内容           *********************           -->
+	<div class=" container-layout bg-green text-white">
+		<div class="border-top padding-top">
+			<div class="text-center">
+					<ul class="nav nav-inline ">
+						<li><a class="text-white" href="#">新闻资讯</a></li>
+						<li><a class="text-white" href="#">产品中心</a></li>
+						<li><a class="text-white" href="#">技术反馈</a></li>
+						<li><a class="text-white" href="#">留言反馈</a></li>
+						<li><a class="text-white" href="#">联系方式</a></li>
+					</ul>
+				</div>
+			</div>
+		<div class=" text-center height-big">版权所有©燕山大学   地址：河北省秦皇岛市河北大街西段438号   电话：+86-335-8057100   冀ICP备05023975号-1    冀公网安备 13030202001682号
+		</div>
+	</div>
